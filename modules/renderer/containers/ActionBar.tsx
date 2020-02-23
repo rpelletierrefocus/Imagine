@@ -21,6 +21,7 @@ interface IActionBarStateProps {
 }
 
 interface IActionBarDispatchProps {
+  onMailAll(): void
   onRemoveAll(): void
   onSave(type: SaveType): void
   onAdd(): void
@@ -38,6 +39,10 @@ class ActionBar extends PureComponent<IActionBarStateProps & IActionBarDispatchP
     this.props.onOptionsVisibleToggle(!this.props.optionsVisible)
   }
 
+  onMailOptionsVisibleClick = () => {
+    console.log('test')
+  }
+  
   onOptionsHide = () => {
     this.props.onOptionsVisibleToggle(false)
   }
@@ -77,6 +82,11 @@ class ActionBar extends PureComponent<IActionBarStateProps & IActionBarDispatchP
           <Icon name="delete" />
           <span className="ellipsis">{__('clear')}</span>
         </button>
+		
+		<button onClick={this.props.onMailAll} disabled={!count}>
+          <Icon name="mail" />
+          <span className="ellipsis">{__('Mail')}</span>
+        </button>
 
         {
           updateInfo ? (
@@ -103,6 +113,21 @@ class ActionBar extends PureComponent<IActionBarStateProps & IActionBarDispatchP
             <Icon name="tune" />
           </button>
         </Popper>
+		
+		<Popper
+          className="options-popper"
+          visible={this.props.optionsVisible}
+          popper={(
+            <OptionsPanel onApplyClick={this.onOptionsHide} />
+          )}>
+          <button
+            className={classnames({
+              '-active': this.props.optionsVisible,
+            })}
+            onClick={this.onMailOptionsVisibleClick}>
+            <Icon name="select" />
+          </button>
+        </Popper>
       </div>
     )
   }
@@ -117,7 +142,9 @@ export default connect<IActionBarStateProps, IActionBarDispatchProps, {}, IState
     onRemoveAll() {
       dispatch(actions.taskClear())
     },
-
+	onMailAll() {
+      dispatch(actions.taskClear())
+    },
     onOptionsVisibleToggle(visible: boolean) {
       dispatch(actions.optionsVisible(visible))
     },

@@ -100,6 +100,16 @@ class OptionsPanel extends PureComponent<IProps & IDispatchProps, {}> {
               />
             </div>
           </Collapse>
+		  <Collapse title="SMTP" initialVisible={true}>
+            <div className="collapse-row">
+              <ImageOptions
+                precision={true}
+                ext={SupportedExt.webp}
+                options={optionsMap.webp}
+                onChange={this.onOptionsChanges.webp}
+              />
+            </div>
+          </Collapse>
         </div>
         <footer className="clearfix">
           <button onClick={this.props.onApplyClick}>

@@ -45,7 +45,7 @@
     "cross-env": "^6.0.3",
     "css-loader": "^3.2.0",
     "electron": "^7.0.1",
-    "electron-builder": "^22.1.0",
+    "electron-builder": "^22.3.2",
     "electron-devtools-installer": "^2.2.4",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.2.0",
@@ -79,10 +79,12 @@
   "dependencies": {
     "child-process-promise": "^2.2.1",
     "electron-log": "^3.0.8",
+    "electron-packager": "^14.2.1",
     "electron-updater": "^4.2.0",
     "file-type": "^12.4.0",
     "fs-extra": "^8.1.0",
     "lodash": "^4.17.15",
+    "nodemailer": "^6.4.3",
     "pify": "^4.0.1",
     "raw-body": "^2.4.1",
     "read-chunk": "^3.2.0",
@@ -103,7 +105,9 @@
     },
     "linux": {
       "category": "Graphics",
-      "publish": ["github"]
+      "publish": [
+        "github"
+      ]
     },
     "nsis": {
       "perMachine": true
