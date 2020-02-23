@@ -21,6 +21,8 @@ export default {
   taskDelete: createAction<string[]>(ACTIONS.TASK_DELETE),
 
   taskClear: createAction(ACTIONS.TASK_CLEAR),
+  
+  taskMail: createAction(ACTIONS.TASK_MAIL),
 
   taskUpdateOptions: createAction<{
     id: string
